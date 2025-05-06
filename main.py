@@ -23,4 +23,19 @@ def display_meal(meal):
     print(f"Instructions:\n{meal['strInstructions'][500]}...")
     print(f"Image: {meal['strMealThumb']}")
     print(f"Video Tutorial: {meal['strYoutube']}\n")
-    
+
+
+def main():
+    print("Recipe Finder based on Ingredient!:")
+    ingredient= input("Enter an ingredient: ").strip()
+
+    meals=find_meal_by_ingredient(ingredient)
+
+    if not meals:
+        print("No meals found with the ingredient you have inputed")
+        return
+
+
+    print(f"\n Found {len(meals)} meal(s) with '{ingredient}' :\n")
+    for idx, meal in enumerate(meals[:5], 1):
+        print(f"{idx}. {meal['strMeal']} (ID: {meal['IdMeal']})")   
