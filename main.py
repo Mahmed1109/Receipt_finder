@@ -38,4 +38,16 @@ def main():
 
     print(f"\n Found {len(meals)} meal(s) with '{ingredient}' :\n")
     for idx, meal in enumerate(meals[:5], 1):
-        print(f"{idx}. {meal['strMeal']} (ID: {meal['IdMeal']})")   
+        print(f"{idx}. {meal['strMeal']} (ID: {meal['IdMeal']})")  
+
+    choice=input("\nEnter the number of the meal you wish to find more details on to cook:  ").strip()
+    if choice.isdigit() and 1<=int(choice) <= len(meals[:5]):
+        meal_id=meals[int(choice)-1]["idMeal"]
+        meal_details=get_meal(meal_id)
+        if meal_details:
+            display_meal(meal_details)
+    else:
+        print("Invalid input.")
+
+if __name__=="__main__":
+    main()
